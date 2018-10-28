@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -56,26 +55,16 @@ class App extends Component {
     //styling is done in react as a object based it should only be used when applied for specific elements within a component
     //However hover and other attributes are difficult to implement
     const style = {
-      backgroundColor: 'green',
-      color: 'white',
+      backgroundColor: 'white',
       font: 'inherit',
       border: '1px solid blue',
       cursor: 'pointer',
-      padding: '8px',
-      ':hover' : {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      padding: '8px'
     };
 
     let persons = null;
 
     if( this.state.showPersons ) {
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }      
       persons = (
           <div>
           {
@@ -92,25 +81,12 @@ class App extends Component {
         );
     };
 
-    const classes = [];
-    if( this.state.persons.length <= 2 ){
-      classes.push('red');
-    }
-
-    if(this.state.persons.length <=1  ){
-      classes.push('bold');
-    }
-
     return (
-    //Using styleroot to engulf whole root div to get access to media queries
-    <StyleRoot>
       <div className="App">
         <h1>Hi, This is a react App. </h1>
-        <p className = {classes.join(' ')} > This is really awesome!! </p>
         <button style={style} onClick={() => this.toggleHandler()}>Toggle Names</button> 
         {persons}
       </div>
-    </StyleRoot>
 
     );
 
@@ -120,4 +96,4 @@ class App extends Component {
   }
 }
 
-export default Radium(App);
+export default App;
